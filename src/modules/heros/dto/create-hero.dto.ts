@@ -1,6 +1,6 @@
 import { IsString, IsNumberString, IsNotEmpty } from 'class-validator'
 
-export class HeroDto {
+export class CreateHeroDto {
   @IsNotEmpty()
   @IsString()
   readonly realName: string

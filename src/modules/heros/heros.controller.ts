@@ -1,5 +1,6 @@
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -14,6 +15,7 @@ import { HeroService } from './services'
 
 import { HeroEntity } from 'src/entities/hero.entity'
 import { IResponse } from '../@common/interface/response.interface'
+import { CreateHeroDto } from './dto/create-hero.dto'
 
 @ApiTags('heros')
 @Controller('hero')
@@ -80,8 +82,8 @@ export class HerosController {
   }
 
   @Post('/create')
-  public async createHero() {
-    return await this.heroService.create.newHero()
+  public async createHero(@Body() hero: CreateHeroDto) {
+    return await this.heroService.create.newHero(hero)
   }
 
   @Put('/update/:id')
